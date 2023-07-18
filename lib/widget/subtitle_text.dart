@@ -4,7 +4,7 @@ class SubTitleTextWidget extends StatelessWidget {
   const SubTitleTextWidget(
       {super.key,
       required this.lable,
-      this.fontSize=70,
+      this.fontSize=20,
       this.fontStyle=FontStyle.normal,
        this.fontWeight=FontWeight.normal,
       this.color,

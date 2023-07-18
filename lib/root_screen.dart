@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:shop_users/screens/cart_screen.dart';
+import 'package:shop_users/screens/cart/cart_screen.dart';
 import 'package:shop_users/screens/home_screen.dart';
 import 'package:shop_users/screens/profile_screen.dart';
 import 'package:shop_users/screens/search_screen.dart';
@@ -33,6 +33,7 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: controller,
         children: screens,
       ),

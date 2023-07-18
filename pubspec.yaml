@@ -29,11 +29,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  fancy_shimmer_image: ^2.0.3
   flutter:
     sdk: flutter
   flutter_iconly: ^1.0.2
   provider: ^6.0.5
   shared_preferences: ^2.2.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
