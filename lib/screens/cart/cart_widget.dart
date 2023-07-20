@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:shop_users/const/app_constants.dart';
 import 'package:shop_users/screens/cart/quantity_btm_sheet.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
@@ -21,7 +22,7 @@ class CartWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: FancyShimmerImage(
                   imageUrl:
-                      'https://cdn.pixabay.com/photo/2014/10/27/19/18/baby-shoes-505471_640.jpg',
+                      AppConstants.productImageUrl,
                   boxFit: BoxFit.fill,
                   width: size.height * 0.2,
                   height: size.height * 0.2,

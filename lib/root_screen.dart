@@ -41,7 +41,7 @@ class _RootScreenState extends State<RootScreen> {
         selectedIndex: currentScreen,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 2,
-        height:kBottomNavigationBarHeight,
+        height: kBottomNavigationBarHeight,
         destinations: const [
           NavigationDestination(
             selectedIcon: Icon(IconlyBold.home),
@@ -55,7 +55,11 @@ class _RootScreenState extends State<RootScreen> {
           ),
           NavigationDestination(
             selectedIcon: Icon(IconlyBold.bag2),
-            icon: Icon(IconlyLight.bag2),
+            icon: Badge(label: Text("15"),
+              child: Icon(
+                IconlyLight.bag2,
+              ),
+            ),
             label: "Cart",
           ),
           NavigationDestination(
@@ -65,7 +69,6 @@ class _RootScreenState extends State<RootScreen> {
           ),
         ],
         onDestinationSelected: (index) {
-          
           setState(() {
             currentScreen = index;
           });
