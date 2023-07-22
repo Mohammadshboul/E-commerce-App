@@ -23,7 +23,6 @@ class _ProductWidgetState extends State<ProductWidget> {
         onTap: () {},
         child: Column(
           children: [
-            
             ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: FancyShimmerImage(
@@ -32,17 +31,23 @@ class _ProductWidgetState extends State<ProductWidget> {
                 height: size.height * 0.22,
               ),
             ),
+            const SizedBox(
+              height: 8,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Flexible(
                   child: TitlesTextWidget(
                     lable: "title title s ",
+                    maxLines: 2,
                   ),
                 ),
                 Flexible(
                   child: IconButton(
-                      onPressed: () {}, icon: const Icon(IconlyLight.heart)),
+                    onPressed: () {},
+                    icon: const Icon(IconlyLight.heart),
+                  ),
                 ),
               ],
             ),
