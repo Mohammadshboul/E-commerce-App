@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
+import 'package:shop_users/screens/inner_screens/product_details.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -18,9 +19,10 @@ class _ProductWidgetState extends State<ProductWidget> {
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(1.0),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(30),
-        onTap: () {},
+      child: GestureDetector(
+        onTap: ()async {
+         await Navigator.pushNamed(context, ProductDetails.routName);
+        },
         child: Column(
           children: [
             ClipRRect(

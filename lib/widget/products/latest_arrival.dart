@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
+import 'package:shop_users/screens/inner_screens/product_details.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -14,7 +15,9 @@ class LatestArrivalProductWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: ()async {
+          await Navigator.pushNamed(context, ProductDetails.routName);
+        },
         child: SizedBox(
           width: size.width * 0.60,
           child: Row(

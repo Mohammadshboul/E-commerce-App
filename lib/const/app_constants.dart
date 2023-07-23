@@ -8,7 +8,7 @@ class AppConstants {
     AssetsManager.banner1,
     AssetsManager.banner2
   ];
- static List<CategoryModel> categoriesList = [
+  static List<CategoryModel> categoriesList = [
     CategoryModel(
       id: AssetsManager.mobiles,
       name: "Phones",
@@ -34,7 +34,7 @@ class AppConstants {
       name: "Book",
       image: AssetsManager.book,
     ),
-     CategoryModel(
+    CategoryModel(
       id: AssetsManager.fashion,
       name: "Fashion",
       image: AssetsManager.fashion,
@@ -49,6 +49,5 @@ class AppConstants {
       name: "Watch",
       image: AssetsManager.watch,
     ),
-
   ];
 }

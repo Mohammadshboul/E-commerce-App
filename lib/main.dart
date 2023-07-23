@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_users/const/theme_data.dart';
 import 'package:shop_users/provider/theme_provider.dart';
 import 'package:shop_users/root_screen.dart';
+import 'package:shop_users/screens/inner_screens/product_details.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           theme: Styles.themeData(
               isDarktheme: ThemeProvider.getIsDarkTheme, context: context),
           home: const RootScreen(),
+          routes: {ProductDetails.routName:(context)=>const ProductDetails(),},
         );
       }),
     );

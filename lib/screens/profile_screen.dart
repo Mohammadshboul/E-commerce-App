@@ -117,19 +117,18 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
                 const Divider(),
-                Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(IconlyLight.logout),
-                    label: const Text("Logout"),
-                  ),
-                )
               ],
             ),
-          )
+          ),
+          Center(
+            child: ElevatedButton.icon(
+              onPressed: () {},
+              icon: const Icon(IconlyLight.logout),
+              label: const Text("Logout"),
+            ),
+          ),
         ],
       ),
     );
   }
 }
-
