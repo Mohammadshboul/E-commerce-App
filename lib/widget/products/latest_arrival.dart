@@ -1,8 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
 import 'package:shop_users/screens/inner_screens/product_details.dart';
+import 'package:shop_users/widget/products/heart_btn.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -15,7 +15,7 @@ class LatestArrivalProductWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: ()async {
+        onTap: () async {
           await Navigator.pushNamed(context, ProductDetails.routName);
         },
         child: SizedBox(
@@ -28,8 +28,8 @@ class LatestArrivalProductWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: FancyShimmerImage(
                     imageUrl: AppConstants.productImageUrl,
-                    width: size.width * 0.28,
-                    height: size.width * 0.28,
+                    width: size.width * 0.35,
+                    height: size.width * 0.35,
                   ),
                 ),
               ),
@@ -40,17 +40,17 @@ class LatestArrivalProductWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TitlesTextWidget(
-                      lable: "title title  ",
+                     TitlesTextWidget(
+                      lable: "title  "*10,
                       maxLines: 2,
                       fontSize: 18,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(IconlyLight.heart),
+                        HeartButtonWidget(
+                          size: 22,
+                          color: Theme.of(context).scaffoldBackgroundColor,
                         ),
                         IconButton(
                           onPressed: () {},
@@ -61,6 +61,7 @@ class LatestArrivalProductWidget extends StatelessWidget {
                     const FittedBox(
                       child: SubTitleTextWidget(
                         lable: "16.99\$",
+                        fontSize: 20,
                       ),
                     ),
                   ],

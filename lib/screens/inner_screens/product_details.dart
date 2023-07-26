@@ -1,8 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
 import 'package:shop_users/widget/app_name_text.dart';
+import 'package:shop_users/widget/products/heart_btn.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -79,13 +79,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Material(
-                        color: Colors.teal.shade200,
-                        shape: const CircleBorder(),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(IconlyLight.heart),
-                        ),
+                      const HeartButtonWidget(
+                        size: 30,
                       ),
                       const SizedBox(
                         width: 10,
@@ -113,7 +108,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     SubTitleTextWidget(lable: "In Phones")
                   ],
                 ),
-                 const SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 SubTitleTextWidget(lable: "Description" * 15),

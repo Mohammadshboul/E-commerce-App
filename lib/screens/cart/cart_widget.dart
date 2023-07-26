@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
 import 'package:shop_users/screens/cart/quantity_btm_sheet.dart';
+import 'package:shop_users/widget/products/heart_btn.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -21,8 +22,7 @@ class CartWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: FancyShimmerImage(
-                  imageUrl:
-                      AppConstants.productImageUrl,
+                  imageUrl: AppConstants.productImageUrl,
                   boxFit: BoxFit.fill,
                   width: size.height * 0.2,
                   height: size.height * 0.2,
@@ -49,10 +49,9 @@ class CartWidget extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(Icons.clear),
                             ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(IconlyLight.heart),
-                            ),
+                            const HeartButtonWidget(
+                              size: 25,
+                            )
                           ],
                         ),
                       ],

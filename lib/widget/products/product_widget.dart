@@ -1,8 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/app_constants.dart';
 import 'package:shop_users/screens/inner_screens/product_details.dart';
+import 'package:shop_users/widget/products/heart_btn.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -36,46 +36,47 @@ class _ProductWidgetState extends State<ProductWidget> {
             const SizedBox(
               height: 8,
             ),
-            Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Flexible(
+                Flexible(flex: 5,
                   child: TitlesTextWidget(
-                    lable: "title title s ",
+                    lable: "title"*10,
+                    fontSize: 18,
                     maxLines: 2,
                   ),
                 ),
-                Flexible(
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(IconlyLight.heart),
-                  ),
+                const Flexible(flex: 2,
+                  child: HeartButtonWidget(size: 25,)
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Flexible(
-                  child: SubTitleTextWidget(
-                    lable: "166\$ ",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:5 ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Flexible(
+                    child: SubTitleTextWidget(
+                      lable: "166\$ ",
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: Material(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.lightBlue,
-                    child: InkWell(
+                  Flexible(
+                    child: Material(
                       borderRadius: BorderRadius.circular(16),
-                      onTap: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.add_shopping_cart_rounded),
+                      color: Colors.lightBlue,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(16),
+                        onTap: () {},
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(Icons.add_shopping_cart_rounded),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 10,
