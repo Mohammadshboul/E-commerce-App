@@ -40,8 +40,8 @@ class LatestArrivalProductWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     TitlesTextWidget(
-                      lable: "title  "*10,
+                    TitlesTextWidget(
+                      lable: "title  " * 10,
                       maxLines: 2,
                       fontSize: 18,
                     ),

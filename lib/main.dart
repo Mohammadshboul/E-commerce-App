@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      
       providers: [
         ChangeNotifierProvider(create: (_) {
           return ThemeProvider();
@@ -29,7 +28,9 @@ class MyApp extends StatelessWidget {
           theme: Styles.themeData(
               isDarktheme: ThemeProvider.getIsDarkTheme, context: context),
           home: const RootScreen(),
-          routes: {ProductDetails.routName:(context)=>const ProductDetails(),},
+          routes: {
+            ProductDetails.routName: (context) => const ProductDetails(),
+          },
         );
       }),
     );

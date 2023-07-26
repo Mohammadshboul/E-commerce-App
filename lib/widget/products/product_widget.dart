@@ -20,8 +20,8 @@ class _ProductWidgetState extends State<ProductWidget> {
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: GestureDetector(
-        onTap: ()async {
-         await Navigator.pushNamed(context, ProductDetails.routName);
+        onTap: () async {
+          await Navigator.pushNamed(context, ProductDetails.routName);
         },
         child: Column(
           children: [
@@ -36,23 +36,26 @@ class _ProductWidgetState extends State<ProductWidget> {
             const SizedBox(
               height: 8,
             ),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Flexible(flex: 5,
+                Flexible(
+                  flex: 5,
                   child: TitlesTextWidget(
-                    lable: "title"*10,
+                    lable: "title" * 10,
                     fontSize: 18,
                     maxLines: 2,
                   ),
                 ),
-                const Flexible(flex: 2,
-                  child: HeartButtonWidget(size: 25,)
-                ),
+                const Flexible(
+                    flex: 2,
+                    child: HeartButtonWidget(
+                      size: 25,
+                    )),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:5 ),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

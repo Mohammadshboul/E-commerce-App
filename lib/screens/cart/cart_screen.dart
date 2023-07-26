@@ -20,19 +20,22 @@ class CartScreen extends StatelessWidget {
                     "Looks like you didn't add anything yet to your cart\ngo ahead and start shopping now",
                 buttontext: "Shop now"),
           )
-        : Scaffold(bottomSheet:const CartBottomCheckout() ,
-           appBar: AppBar(
-        title: const Text("Cart (5)"),
-        leading: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: Image.asset(AssetsManager.shoppingCart),
-        ),
-        actions: [IconButton(onPressed: () {
-          
-        }, icon: const Icon(IconlyBold.delete))],
-      ),
-            body: SizedBox(height: MediaQuery.of(context).size.height,
-            width:MediaQuery.of(context).size.width ,
+        : Scaffold(
+            bottomSheet: const CartBottomCheckout(),
+            appBar: AppBar(
+              title: const Text("Cart (5)"),
+              leading: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Image.asset(AssetsManager.shoppingCart),
+              ),
+              actions: [
+                IconButton(
+                    onPressed: () {}, icon: const Icon(IconlyBold.delete))
+              ],
+            ),
+            body: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               child: ListView.builder(
                 itemCount: 15,
                 itemBuilder: (context, index) {

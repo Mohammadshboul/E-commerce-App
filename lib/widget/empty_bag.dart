@@ -32,16 +32,15 @@ class EmptyBagWidget extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-             SubTitleTextWidget(
+            SubTitleTextWidget(
               lable: title,
               fontWeight: FontWeight.w600,
               fontSize: 25,
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: SubTitleTextWidget(
-                lable:
-                    suptitle,
+                lable: suptitle,
                 fontWeight: FontWeight.w400,
               ),
             ),
@@ -54,7 +53,7 @@ class EmptyBagWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
               ),
               onPressed: () {},
-              child:  Text(
+              child: Text(
                 buttontext,
                 style: const TextStyle(fontSize: 22),
               ),

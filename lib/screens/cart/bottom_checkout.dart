@@ -14,19 +14,21 @@ class CartBottomCheckout extends StatelessWidget {
           top: BorderSide(color: Colors.grey),
         ),
       ),
-      child:  SizedBox(
+      child: SizedBox(
         height: kBottomNavigationBarHeight + 22,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FittedBox(child: TitlesTextWidget(lable: "Total (6 Products/6 Items)" )),
+                    FittedBox(
+                        child: TitlesTextWidget(
+                            lable: "Total (6 Products/6 Items)")),
                     SubTitleTextWidget(lable: "16.99\$"),
-                    
                   ],
                 ),
               ),
