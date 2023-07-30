@@ -6,25 +6,25 @@ import 'package:shop_users/widget/empty_bag.dart';
 
 import '../../widget/products/product_widget.dart';
 
-class WishListScreen extends StatelessWidget {
-  const WishListScreen({super.key});
-  final bool isEmpty = false; 
-  static const routName = '/WishListScreen';
+class ViewedRecentlyScreen extends StatelessWidget {
+  const ViewedRecentlyScreen({super.key});
+  final bool isEmpty = true;
+  static const routName = '/ViewedRecentlyScreen';
 
   @override
   Widget build(BuildContext context) {
     return isEmpty
         ? Scaffold(
             body: EmptyBagWidget(
-                imagePath: AssetsManager.bagWish,
-                title: "Your wishlist is empty",
+                imagePath: AssetsManager.recent,
+                title: "Your viewed recently is empty",
                 suptitle:
-                    "Looks like you didn't add anything yet to your Wishlist \ngo ahead and start shopping now",
+                    "Looks like you didn't add anything yet to your viewed recently\ngo ahead and start shopping now",
                 buttontext: "Shop now"),
           )
         : Scaffold(
             appBar: AppBar(
-              title: const Text("Wishlist (5)"),
+              title: const Text("viewed recently (5)"),
               leading: Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Image.asset(AssetsManager.shoppingCart),
