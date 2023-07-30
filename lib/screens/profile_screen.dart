@@ -5,6 +5,7 @@ import 'package:shop_users/provider/theme_provider.dart';
 import 'package:shop_users/screens/inner_screens/viewed_recently.dart';
 import 'package:shop_users/screens/inner_screens/wishlist.dart';
 import 'package:shop_users/services/assets_manager.dart';
+import 'package:shop_users/services/my_app_method.dart';
 import 'package:shop_users/widget/app_name_text.dart';
 import 'package:shop_users/widget/custom_list_tile.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
@@ -85,15 +86,16 @@ class ProfileScreen extends StatelessWidget {
                 CustomListTile(
                   imagePath: AssetsManager.wishlistSvg,
                   text: "Wishlist",
-                  fun: () async{
-                  await  Navigator.pushNamed(context, WishListScreen.routName);
+                  fun: () async {
+                    await Navigator.pushNamed(context, WishListScreen.routName);
                   },
                 ),
                 CustomListTile(
                   imagePath: AssetsManager.recent,
                   text: "Viewed recently",
-                  fun: ()async {
-                   await Navigator.pushNamed(context, ViewedRecentlyScreen.routName);
+                  fun: () async {
+                    await Navigator.pushNamed(
+                        context, ViewedRecentlyScreen.routName);
                   },
                 ),
                 CustomListTile(
@@ -128,7 +130,14 @@ class ProfileScreen extends StatelessWidget {
           ),
           Center(
             child: ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () async {
+              await  MyAppMethods.showErrorOrWarningDialog(
+                  context: context,
+                  Subtitle: "Are you sure",
+                  fct: () {},
+                  isError: false
+                );
+              },
               icon: const Icon(IconlyLight.logout),
               label: const Text("Logout"),
             ),
