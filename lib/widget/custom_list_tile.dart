@@ -10,11 +10,11 @@ class CustomListTile extends StatelessWidget {
     required this.imagePath,
   });
   final String imagePath, text;
-  final Function fun;
+  final void Function() fun;
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => fun,
+      onTap: fun,
       leading: Image.asset(
         imagePath,
         height: 45,
