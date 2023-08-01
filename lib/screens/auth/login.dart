@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/my_validators.dart';
 import 'package:shop_users/widget/app_name_text.dart';
+import 'package:shop_users/widget/auth/google_button.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -172,21 +173,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 25,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.background,
-                              padding: const EdgeInsets.all(12),
-                            ),
-                            onPressed: () {
-                              _loginFct();
-                            },
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                          const Expanded(
+                            flex: 2,
+                            child: GoogleButton(),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Theme.of(context).colorScheme.background,
+                                padding: const EdgeInsets.all(12),
+                              ),
+                              onPressed: () {
+                                _loginFct();
+                              },
+                              child: const Text(
+                                "Guest",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),

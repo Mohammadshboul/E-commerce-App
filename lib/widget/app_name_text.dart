@@ -10,8 +10,8 @@ class AppNameTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       period: const Duration(seconds: 6),
-      baseColor: Colors.purple,
-      highlightColor: Colors.red,
+      baseColor: Colors.purple.shade200,
+      highlightColor: const Color.fromARGB(255, 63, 0, 94),
       child: TitlesTextWidget(lable: "AL-Shboul Shop", fontSize: fontsize),
     );
   }
