@@ -68,8 +68,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: TitlesTextWidget(
-                    lable: "Welcome Back",
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitlesTextWidget(
+                        lable: "Welcome Back",
+                      ),
+                      SubTitleTextWidget(
+                        lable: "Let's get logged in so you start exploring.",
+                        fontSize: 17,
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(
