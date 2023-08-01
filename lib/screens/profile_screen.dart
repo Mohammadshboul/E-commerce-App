@@ -131,12 +131,11 @@ class ProfileScreen extends StatelessWidget {
           Center(
             child: ElevatedButton.icon(
               onPressed: () async {
-              await  MyAppMethods.showErrorOrWarningDialog(
-                  context: context,
-                  Subtitle: "Are you sure",
-                  fct: () {},
-                  isError: false
-                );
+                await MyAppMethods.showErrorOrWarningDialog(
+                    context: context,
+                    Subtitle: "Are you sure",
+                    fct: () {},
+                    isError: false);
               },
               icon: const Icon(IconlyLight.logout),
               label: const Text("Logout"),

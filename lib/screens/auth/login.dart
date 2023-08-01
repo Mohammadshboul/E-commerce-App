@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   late final FocusNode _emailFocusNode;
   late final FocusNode _passwordFocusNode;
   late final _formKey = GlobalKey<FormState>();
+  bool obsecure = true;
 
   @override
   void initState() {
@@ -51,85 +52,169 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 60,
-              ),
-              const AppNameTextWidget(
-                fontsize: 30,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: TitlesTextWidget(
-                  lable: "Welcone Back",
+          padding: const EdgeInsets.all(15.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 60,
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      controller: _emailController,
-                      focusNode: _emailFocusNode,
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        hintText: "Email address",
-                        prefixIcon: Icon(IconlyLight.message),
+                const AppNameTextWidget(
+                  fontsize: 30,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: TitlesTextWidget(
+                    lable: "Welcome Back",
+                  ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        controller: _emailController,
+                        focusNode: _emailFocusNode,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          hintText: "Email address",
+                          prefixIcon: Icon(IconlyLight.message),
+                        ),
+                        validator: (value) {
+                          return MyValidators.emailValidator(value);
+                        },
+                        onFieldSubmitted: (value) {
+                          _loginFct();
+                        },
                       ),
-                      validator: (value) {
-                        return MyValidators.emailValidator(value);
-                      },
-                      onFieldSubmitted: (value) {
-                        _loginFct();
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      controller: _passwordController,
-                      focusNode: _passwordFocusNode,
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.visiblePassword,
-                      decoration: const InputDecoration(
-                        hintText: "********",
-                        prefixIcon: Icon(IconlyLight.lock),
+                      const SizedBox(
+                        height: 15,
                       ),
-                      validator: (value) {
-                        return MyValidators.passwordValidator(value);
-                      },
-                      onFieldSubmitted: (value) {
-                        _loginFct();
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const SubTitleTextWidget(
-                          lable: "Forget Password ?",
-                          textDecoration: TextDecoration.underline,
-                          fontStyle: FontStyle.italic,
+                      TextFormField(
+                        controller: _passwordController,
+                        focusNode: _passwordFocusNode,
+                        textInputAction: TextInputAction.done,
+                        obscureText: obsecure,
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration: InputDecoration(
+                          hintText: "********",
+                          prefixIcon: const Icon(IconlyLight.lock),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                obsecure = !obsecure;
+                              });
+                            },
+                            icon: Icon(obsecure
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                          ),
+                        ),
+                        validator: (value) {
+                          return MyValidators.passwordValidator(value);
+                        },
+                        onFieldSubmitted: (value) {
+                          _loginFct();
+                        },
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const SubTitleTextWidget(
+                            lable: "Forget Password ?",
+                            textDecoration: TextDecoration.underline,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.all(12),
+                          ),
+                          onPressed: () {
+                            _loginFct();
+                          },
+                          icon: const Icon(IconlyLight.logout),
+                          label: const Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      SubTitleTextWidget(
+                        lable: "or connect using".toUpperCase(),
+                        fontWeight: FontWeight.w200,
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Row(
+                        children: [
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.background,
+                              padding: const EdgeInsets.all(12),
+                            ),
+                            onPressed: () {
+                              _loginFct();
+                            },
+                            child: const Text(
+                              "Login",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 36,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SubTitleTextWidget(
+                              lable: "Don't have an account?"),
+                          TextButton(
+                            onPressed: () {},
+                            child: const SubTitleTextWidget(
+                              lable: "Sign up ",
+                              textDecoration: TextDecoration.underline,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
