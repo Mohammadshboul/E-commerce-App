@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/my_validators.dart';
+import 'package:shop_users/screens/auth/register.dart';
 import 'package:shop_users/widget/app_name_text.dart';
 import 'package:shop_users/widget/auth/google_button.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
@@ -176,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SubTitleTextWidget(
                         lable: "or connect using".toUpperCase(),
-                        fontWeight: FontWeight.w200,
+                        fontWeight: FontWeight.w300,
                       ),
                       const SizedBox(
                         height: 25,
@@ -222,7 +223,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SubTitleTextWidget(
                               lable: "Don't have an account?"),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, RegisterScreen.routName);
+                            },
                             child: const SubTitleTextWidget(
                               lable: "Sign up ",
                               textDecoration: TextDecoration.underline,
