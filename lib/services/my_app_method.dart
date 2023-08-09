@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_users/services/assets_manager.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
+import 'package:shop_users/widget/title_text.dart';
 
 class MyAppMethods {
   static Future<void> showErrorOrWarningDialog({
@@ -35,7 +36,8 @@ class MyAppMethods {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Visibility(visible: !isError,
+                  Visibility(
+                    visible: !isError,
                     child: TextButton(
                         onPressed: () {
                           Navigator.pop(context);
@@ -51,6 +53,61 @@ class MyAppMethods {
                 ],
               )
             ],
+          ),
+        );
+      },
+    );
+  }
+
+  static Future<void> imagePickerDialog({
+    required BuildContext context,
+    required cameraFCT,
+    required galleryFCT,
+    required removeFCT,
+  }) async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(
+            child: TitlesTextWidget(lable: "Choos option"),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(children: [
+              TextButton.icon(
+                onPressed: () {
+                  cameraFCT();
+
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
+                icon: const Icon(Icons.camera),
+                label: const SubTitleTextWidget(lable: "Camera"),
+              ),
+              TextButton.icon(
+                onPressed: () {
+                  galleryFCT();
+
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
+                icon: const Icon(Icons.image),
+                label: const SubTitleTextWidget(lable: "Gallery"),
+              ),
+              TextButton.icon(
+                onPressed: () {
+                  removeFCT();
+
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                },
+                icon: const Icon(Icons.delete),
+                label: const SubTitleTextWidget(lable: "remove"),
+              ),
+            ]),
           ),
         );
       },

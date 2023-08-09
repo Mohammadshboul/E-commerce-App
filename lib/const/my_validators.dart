@@ -31,8 +31,12 @@ class MyValidators {
   }
 
   static String? repeatPasswordValidator({String? value, String? password}) {
-    if (value != password) {
-      return "Passwords do not match";
+    if (value == null || value.isEmpty) {
+      return "Please enter the confirm password";
+    } else {
+      if (value != password) {
+        return "Passwords do not match";
+      }
     }
     return null;
   }

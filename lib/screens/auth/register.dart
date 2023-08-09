@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shop_users/const/my_validators.dart';
+import 'package:shop_users/services/my_app_method.dart';
 import 'package:shop_users/widget/app_name_text.dart';
+import 'package:shop_users/widget/auth/pick_image_widget.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
@@ -24,6 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _confirmPasswordFocusNode;
   late final _formKey = GlobalKey<FormState>();
   bool obscureText = true;
+  XFile? pickedImage;
   @override
   void initState() {
     _nameController = TextEditingController();
@@ -56,11 +60,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _registerFct() async {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
-    if (isValid) {}
+
+    if (isValid) {
+      if (pickedImage == null) {
+        MyAppMethods.showErrorOrWarningDialog(
+            context: context,
+            Subtitle: "Make sure to pick up an image",
+            fct: () {});
+      }
+    }
+  }
+
+  Future<void> localImagePicker() async {
+    final ImagePicker picker = ImagePicker();
+    await MyAppMethods.imagePickerDialog(
+      context: context,
+      cameraFCT: () async {
+        pickedImage = await picker.pickImage(source: ImageSource.camera);
+
+        setState(() {});
+      },
+      galleryFCT: () async {
+        pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+        setState(() {});
+      },
+      removeFCT: () {
+        setState(() {
+          pickedImage = null;
+        });
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return GestureDetector(
       onTap: () {},
       child: Scaffold(
@@ -86,6 +122,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       TitlesTextWidget(lable: "Welcome"),
                       SubTitleTextWidget(lable: "Your welcome message"),
                     ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                SizedBox(
+                  height: size.width * 0.3,
+                  width: size.width * 0.3,
+                  child: PickImageWidget(
+                    pickedImage: pickedImage,
+                    function: () async {
+                      await localImagePicker();
+                    },
                   ),
                 ),
                 const SizedBox(
