@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/my_validators.dart';
+import 'package:shop_users/root_screen.dart';
 import 'package:shop_users/screens/auth/register.dart';
 import 'package:shop_users/widget/app_name_text.dart';
 import 'package:shop_users/widget/auth/google_button.dart';
@@ -9,6 +10,7 @@ import 'package:shop_users/widget/title_text.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+  static String routName = "/LoginScreen";
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -201,7 +203,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 padding: const EdgeInsets.all(12),
                               ),
                               onPressed: () {
-                                _loginFct();
+                                // _loginFct();
+                                Navigator.pushNamed(
+                                    context, RootScreen.routName);
                               },
                               child: const Text(
                                 "Guest",

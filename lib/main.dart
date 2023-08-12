@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_users/const/theme_data.dart';
 import 'package:shop_users/provider/theme_provider.dart';
+import 'package:shop_users/root_screen.dart';
 import 'package:shop_users/screens/auth/login.dart';
 import 'package:shop_users/screens/auth/register.dart';
+import 'package:shop_users/screens/inner_screens/orders/orders_screen.dart';
 import 'package:shop_users/screens/inner_screens/product_details.dart';
 import 'package:shop_users/screens/inner_screens/viewed_recently.dart';
 import 'package:shop_users/screens/inner_screens/wishlist.dart';
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
             ViewedRecentlyScreen.routName: (context) =>
                 const ViewedRecentlyScreen(),
             RegisterScreen.routName: (context) => const RegisterScreen(),
+            RootScreen.routName: (context) => const RootScreen(),
+            OrdersScreenFree.routeName: (context) => const OrdersScreenFree(),
+            LoginScreen.routName: (context) => const LoginScreen(),
           },
         );
       }),

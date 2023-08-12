@@ -8,7 +8,7 @@ import '../../widget/products/product_widget.dart';
 
 class ViewedRecentlyScreen extends StatelessWidget {
   const ViewedRecentlyScreen({super.key});
-  final bool isEmpty = true;
+  final bool isEmpty = false;
   static const routName = '/ViewedRecentlyScreen';
 
   @override
