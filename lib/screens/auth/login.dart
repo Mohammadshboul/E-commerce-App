@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop_users/const/my_validators.dart';
 import 'package:shop_users/root_screen.dart';
+import 'package:shop_users/screens/auth/forgot_password.dart';
 import 'package:shop_users/screens/auth/register.dart';
 import 'package:shop_users/widget/app_name_text.dart';
 import 'package:shop_users/widget/auth/google_button.dart';
@@ -144,7 +145,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, ForgotPasswordScreen.routeName);
+                          },
                           child: const SubTitleTextWidget(
                             lable: "Forget Password ?",
                             textDecoration: TextDecoration.underline,
