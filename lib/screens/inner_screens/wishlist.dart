@@ -8,7 +8,7 @@ import '../../widget/products/product_widget.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});
-  final bool isEmpty = false; 
+  final bool isEmpty = false;
   static const routName = '/WishListScreen';
 
   @override
@@ -36,7 +36,9 @@ class WishListScreen extends StatelessWidget {
             ),
             body: DynamicHeightGridView(
                 builder: (context, index) {
-                  return const ProductWidget();
+                  return const ProductWidget(
+                    productId: "",
+                  );
                 },
                 itemCount: 20,
                 crossAxisCount: 2),
