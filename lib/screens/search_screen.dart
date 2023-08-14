@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_users/models/product_model.dart';
 import 'package:shop_users/services/assets_manager.dart';
 import 'package:shop_users/widget/products/product_widget.dart';
 import 'package:shop_users/widget/title_text.dart';
@@ -61,9 +62,13 @@ class _SearchScreenState extends State<SearchScreen> {
               Expanded(
                 child: DynamicHeightGridView(
                     builder: (context, index) {
-                      return const ProductWidget();
+                      return ProductWidget(
+                        image: ProductModel.localProds[index].productImage,
+                        title: ProductModel.localProds[index].productTitle,
+                        price: ProductModel.localProds[index].productPrice,
+                      );
                     },
-                    itemCount: 20,
+                    itemCount: ProductModel.localProds.length,
                     crossAxisCount: 2),
               )
             ],

@@ -7,8 +7,8 @@ import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
 class ProductWidget extends StatefulWidget {
-  const ProductWidget({super.key});
-
+  const ProductWidget({super.key, this.image, this.title, this.price});
+  final String? image, title, price;
   @override
   State<ProductWidget> createState() => _ProductWidgetState();
 }
@@ -28,7 +28,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: FancyShimmerImage(
-                imageUrl: AppConstants.productImageUrl,
+                imageUrl: widget.image ?? AppConstants.productImageUrl,
                 width: double.infinity,
                 height: size.height * 0.22,
               ),
@@ -42,7 +42,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                 Flexible(
                   flex: 5,
                   child: TitlesTextWidget(
-                    lable: "title" * 10,
+                    lable: "${widget.title}" ?? "title" * 10,
                     fontSize: 18,
                     maxLines: 2,
                   ),
@@ -59,9 +59,9 @@ class _ProductWidgetState extends State<ProductWidget> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Flexible(
+                  Flexible(
                     child: SubTitleTextWidget(
-                      lable: "166\$ ",
+                      lable: "${widget.price}\$" ?? "199\$",
                     ),
                   ),
                   Flexible(
