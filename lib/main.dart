@@ -11,6 +11,7 @@ import 'package:shop_users/screens/inner_screens/orders/orders_screen.dart';
 import 'package:shop_users/screens/inner_screens/product_details.dart';
 import 'package:shop_users/screens/inner_screens/viewed_recently.dart';
 import 'package:shop_users/screens/inner_screens/wishlist.dart';
+import 'package:shop_users/screens/search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
             LoginScreen.routName: (context) => const LoginScreen(),
             ForgotPasswordScreen.routeName: (context) =>
                 const ForgotPasswordScreen(),
+            SearchScreen.routName: (context) => const SearchScreen(),
           },
         );
       }),

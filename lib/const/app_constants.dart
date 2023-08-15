@@ -40,9 +40,9 @@ class AppConstants {
       image: AssetsManager.fashion,
     ),
     CategoryModel(
-      id: AssetsManager.pc,
-      name: "Pc",
-      image: AssetsManager.pc,
+      id: AssetsManager.laptops,
+      name: "Laptops",
+      image: AssetsManager.laptops,
     ),
     CategoryModel(
       id: AssetsManager.watch,
