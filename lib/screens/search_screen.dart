@@ -23,6 +23,7 @@ class _SearchScreenState extends State<SearchScreen> {
     searchTextConroller = TextEditingController();
   }
 
+  List<ProductModel> productListSearch = [];
   @override
   void dispose() {
     searchTextConroller.dispose();
@@ -61,28 +62,53 @@ class _SearchScreenState extends State<SearchScreen> {
                     TextField(
                       controller: searchTextConroller,
                       decoration: InputDecoration(
-                          filled: true,
-                          prefixIcon: const Icon(Icons.search),
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              searchTextConroller.clear();
-                            },
-                            child: const Icon(Icons.clear),
-                          )),
+                        hintText: "Search",
+                        filled: true,
+                        prefixIcon: const Icon(Icons.search),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            searchTextConroller.clear();
+                            FocusScope.of(context).unfocus();
+                          },
+                          child: const Icon(Icons.clear),
+                        ),
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          productListSearch = productProvider.searchQuery(
+                              searchText: searchTextConroller.text);
+                        });
+                      },
+                      onSubmitted: (value) {
+                        setState(() {
+                          productListSearch = productProvider.searchQuery(
+                              searchText: searchTextConroller.text);
+                        });
+                      },
                     ),
                     const SizedBox(
                       height: 15,
                     ),
+                    if (searchTextConroller.text.isNotEmpty &&
+                        productListSearch.isEmpty) ...[
+                      const Center(
+                          child: TitlesTextWidget(
+                        lable: "No resulte found",
+                        fontSize: 40,
+                      ))
+                    ],
                     Expanded(
                       child: DynamicHeightGridView(
                           builder: (context, index) {
-                            return ChangeNotifierProvider.value(
-                                value: productList[index],
-                                child: ProductWidget(
-                                  productId: productList[index].productId,
-                                ));
+                            return ProductWidget(
+                              productId: searchTextConroller.text.isNotEmpty
+                                  ? productListSearch[index].productId
+                                  : productList[index].productId,
+                            );
                           },
-                          itemCount: productList.length,
+                          itemCount: searchTextConroller.text.isNotEmpty
+                              ? productListSearch.length
+                              : productList.length,
                           crossAxisCount: 2),
                     )
                   ],
