@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_users/provider/cart_provider.dart';
 import 'package:shop_users/provider/product_provider.dart';
 import 'package:shop_users/screens/inner_screens/product_details.dart';
 import 'package:shop_users/widget/products/heart_btn.dart';
@@ -25,6 +26,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     final productProvider = Provider.of<ProductProvider>(context);
 
     final getCurrentProduct = productProvider.findByProdId(widget.productId);
+    final cartProvider = Provider.of<CartProvider>(context);
     return getCurrentProduct == null
         ? const SizedBox.shrink()
         : Padding(
@@ -81,10 +83,20 @@ class _ProductWidgetState extends State<ProductWidget> {
                             color: Colors.lightBlue,
                             child: InkWell(
                               borderRadius: BorderRadius.circular(16),
-                              onTap: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(Icons.add_shopping_cart_rounded),
+                              onTap: () {
+                                if (cartProvider.isProductInCart(
+                                    productId: getCurrentProduct.productId)) {
+                                  return;
+                                }
+                                cartProvider.addProductToCart(
+                                    productID: getCurrentProduct.productId);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(cartProvider.isProductInCart(
+                                        productId: getCurrentProduct.productId)
+                                    ? Icons.check
+                                    : Icons.add_shopping_cart_rounded),
                               ),
                             ),
                           ),
