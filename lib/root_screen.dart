@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_users/provider/cart_provider.dart';
 import 'package:shop_users/screens/cart/cart_screen.dart';
 import 'package:shop_users/screens/home_screen.dart';
 import 'package:shop_users/screens/profile_screen.dart';
@@ -32,6 +34,8 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+
     return Scaffold(
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
@@ -43,28 +47,28 @@ class _RootScreenState extends State<RootScreen> {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 2,
         height: kBottomNavigationBarHeight,
-        destinations: const [
-          NavigationDestination(
+        destinations: [
+          const NavigationDestination(
             selectedIcon: Icon(IconlyBold.home),
             icon: Icon(IconlyLight.home),
             label: "Home",
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(IconlyBold.search),
             icon: Icon(IconlyLight.search),
             label: "Search",
           ),
           NavigationDestination(
-            selectedIcon: Icon(IconlyBold.bag2),
+            selectedIcon: const Icon(IconlyBold.bag2),
             icon: Badge(
-              label: Text("15"),
-              child: Icon(
+              label: Text("${cartProvider.getCartItems.length}"),
+              child: const Icon(
                 IconlyLight.bag2,
               ),
             ),
             label: "Cart",
           ),
-          NavigationDestination(
+          const NavigationDestination(
             selectedIcon: Icon(IconlyBold.profile),
             icon: Icon(IconlyLight.profile),
             label: "Profile",
