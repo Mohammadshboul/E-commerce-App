@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_users/models/cart_model.dart';
+import 'package:shop_users/provider/cart_provider.dart';
 import 'package:shop_users/provider/product_provider.dart';
 import 'package:shop_users/screens/cart/quantity_btm_sheet.dart';
 import 'package:shop_users/widget/products/heart_btn.dart';
@@ -15,6 +16,7 @@ class CartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartModelProvider = Provider.of<CartModel>(context);
+    final cartProvider = Provider.of<CartProvider>(context);
 
     final productProvider = Provider.of<ProductProvider>(context);
 
@@ -57,7 +59,11 @@ class CartWidget extends StatelessWidget {
                               Column(
                                 children: [
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      cartProvider.removeOneItem(
+                                          productId:
+                                              getCurrentProduct.productId);
+                                    },
                                     icon: const Icon(Icons.clear),
                                   ),
                                   const HeartButtonWidget(

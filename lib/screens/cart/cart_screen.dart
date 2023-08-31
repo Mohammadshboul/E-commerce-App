@@ -5,6 +5,7 @@ import 'package:shop_users/provider/cart_provider.dart';
 import 'package:shop_users/screens/cart/bottom_checkout.dart';
 import 'package:shop_users/screens/cart/cart_widget.dart';
 import 'package:shop_users/services/assets_manager.dart';
+import 'package:shop_users/services/my_app_method.dart';
 import 'package:shop_users/widget/empty_bag.dart';
 
 class CartScreen extends StatelessWidget {
@@ -33,7 +34,15 @@ class CartScreen extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    MyAppMethods.showErrorOrWarningDialog(
+                        isError: false,
+                        context: context,
+                        Subtitle: "Remove items",
+                        fct: () {
+                          cartProvider.clearLocalCart();
+                        });
+                  },
                   icon: const Icon(IconlyBold.delete),
                 )
               ],

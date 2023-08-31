@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_users/provider/product_provider.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
-
 import '../../provider/cart_provider.dart';
 
 class CartBottomCheckout extends StatelessWidget {
@@ -11,6 +11,7 @@ class CartBottomCheckout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
 
     return Container(
       decoration: BoxDecoration(
@@ -31,14 +32,21 @@ class CartBottomCheckout extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FittedBox(
-                        child: TitlesTextWidget(
-                            lable:
-                                "Total (${cartProvider.getCartItems.length}  Products/${cartProvider.getCartItems.length} Items)")),
-                    const SubTitleTextWidget(lable: "16.99\$"),
+                      child: TitlesTextWidget(
+                        lable:
+                            "Total (${cartProvider.getCartItems.length}  Products/${cartProvider.getQuantity()} Items)",
+                      ),
+                    ),
+                    SubTitleTextWidget(
+                        lable:
+                            "${cartProvider.getTotla(productProvider: productProvider).round()}\$"),
                   ],
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: const Text("Checkout"))
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("Checkout"),
+              ),
             ],
           ),
         ),
