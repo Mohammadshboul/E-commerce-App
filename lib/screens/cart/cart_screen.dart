@@ -33,21 +33,31 @@ class CartScreen extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                    onPressed: () {}, icon: const Icon(IconlyBold.delete))
+                  onPressed: () {},
+                  icon: const Icon(IconlyBold.delete),
+                )
               ],
             ),
-            body: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                itemCount: cartProvider.getCartItems.length,
-                itemBuilder: (context, index) {
-                  return ChangeNotifierProvider.value(
-                    value: cartProvider.getCartItems.values.toList()[index],
-                    child: const CartWidget(),
-                  );
-                },
-              ),
+            body: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: cartProvider.getCartItems.length,
+                    itemBuilder: (context, index) {
+                      return ChangeNotifierProvider.value(
+                        value: cartProvider.getCartItems.values
+                            .toList()
+                            .reversed
+                            .toList()[index],
+                        child: const CartWidget(),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: kBottomNavigationBarHeight + 14,
+                )
+              ],
             ),
           );
   }
