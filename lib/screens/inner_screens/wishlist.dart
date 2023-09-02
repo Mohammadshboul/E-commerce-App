@@ -53,8 +53,8 @@ class WishListScreen extends StatelessWidget {
             ),
             body: DynamicHeightGridView(
                 builder: (context, index) {
-                  return ChangeNotifierProvider.value(
-                    value: wishlistProvider.getWishlistItem[index],
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
                     child: ProductWidget(
                       productId: wishlistProvider.getWishlistItem.values
                           .toList()[index]

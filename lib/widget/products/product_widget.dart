@@ -8,6 +8,8 @@ import 'package:shop_users/widget/products/heart_btn.dart';
 import 'package:shop_users/widget/subtitle_text.dart';
 import 'package:shop_users/widget/title_text.dart';
 
+import '../../provider/viewed_product_provider.dart';
+
 class ProductWidget extends StatefulWidget {
   const ProductWidget({
     super.key,
@@ -24,6 +26,7 @@ class _ProductWidgetState extends State<ProductWidget> {
     Size size = MediaQuery.of(context).size;
     final productProvider = Provider.of<ProductProvider>(context);
     // final productModel = Provider.of<ProductModel>(context);
+    final viewedProvider = Provider.of<ViewedProductProvider>(context);
 
     final getCurrentProduct = productProvider.findByProdId(widget.productId);
     final cartProvider = Provider.of<CartProvider>(context);
@@ -33,6 +36,8 @@ class _ProductWidgetState extends State<ProductWidget> {
             padding: const EdgeInsets.all(1.0),
             child: GestureDetector(
               onTap: () async {
+                viewedProvider.addProductToHistory(
+                    productId: getCurrentProduct.productId);
                 await Navigator.pushNamed(context, ProductDetails.routName,
                     arguments: getCurrentProduct.productId);
               },
