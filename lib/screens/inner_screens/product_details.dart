@@ -25,8 +25,9 @@ class _ProductDetailsState extends State<ProductDetails> {
       context,
       listen: false,
     );
-    final productId = ModalRoute.of(context)!.settings.arguments as String;
-    final getCurrentProduct = productProvider.findByProdId(productId);
+    final productId = ModalRoute.of(context)!.settings.arguments;
+    final getCurrentProduct =
+        productProvider.findByProdId(productId!.toString());
     final cartProvider = Provider.of<CartProvider>(context);
 
     return Scaffold(
