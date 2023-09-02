@@ -1,19 +1,23 @@
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_users/provider/wishlist_provider.dart';
 import 'package:shop_users/services/assets_manager.dart';
 import 'package:shop_users/widget/empty_bag.dart';
 
+import '../../services/my_app_method.dart';
 import '../../widget/products/product_widget.dart';
 
 class WishListScreen extends StatelessWidget {
   const WishListScreen({super.key});
-  final bool isEmpty = false;
   static const routName = '/WishListScreen';
 
   @override
   Widget build(BuildContext context) {
-    return isEmpty
+    final wishlistProvider = Provider.of<WishlistProvider>(context);
+
+    return wishlistProvider.getWishlistItem.isEmpty
         ? Scaffold(
             body: EmptyBagWidget(
                 imagePath: AssetsManager.bagWish,
@@ -24,23 +28,41 @@ class WishListScreen extends StatelessWidget {
           )
         : Scaffold(
             appBar: AppBar(
-              title: const Text("Wishlist (5)"),
+              title:
+                  Text("Wishlist (${wishlistProvider.getWishlistItem.length})"),
               leading: Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Image.asset(AssetsManager.shoppingCart),
               ),
               actions: [
                 IconButton(
-                    onPressed: () {}, icon: const Icon(IconlyBold.delete))
+                  onPressed: () {
+                    MyAppMethods.showErrorOrWarningDialog(
+                        isError: false,
+                        context: context,
+                        Subtitle: "Remove items",
+                        fct: () {
+                          wishlistProvider.clearLocalWishlist();
+                        });
+                  },
+                  icon: const Icon(
+                    IconlyBold.delete,
+                  ),
+                ),
               ],
             ),
             body: DynamicHeightGridView(
                 builder: (context, index) {
-                  return const ProductWidget(
-                    productId: "",
+                  return ChangeNotifierProvider.value(
+                    value: wishlistProvider.getWishlistItem[index],
+                    child: ProductWidget(
+                      productId: wishlistProvider.getWishlistItem.values
+                          .toList()[index]
+                          .productId,
+                    ),
                   );
                 },
-                itemCount: 20,
+                itemCount: wishlistProvider.getWishlistItem.length,
                 crossAxisCount: 2),
           );
   }

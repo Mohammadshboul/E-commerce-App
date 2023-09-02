@@ -93,7 +93,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const HeartButtonWidget(
+                              HeartButtonWidget(
+                                productId: getCurrentProduct.productId,
                                 size: 30,
                               ),
                               const SizedBox(

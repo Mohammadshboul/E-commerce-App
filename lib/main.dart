@@ -4,6 +4,7 @@ import 'package:shop_users/const/theme_data.dart';
 import 'package:shop_users/provider/cart_provider.dart';
 import 'package:shop_users/provider/product_provider.dart';
 import 'package:shop_users/provider/theme_provider.dart';
+import 'package:shop_users/provider/wishlist_provider.dart';
 import 'package:shop_users/root_screen.dart';
 import 'package:shop_users/screens/auth/forgot_password.dart';
 import 'package:shop_users/screens/auth/login.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
         }),
         ChangeNotifierProvider(create: (_) {
           return CartProvider();
+        }),
+        ChangeNotifierProvider(create: (_) {
+          return WishlistProvider();
         }),
       ],
       child: Consumer<ThemeProvider>(builder: (context, ThemeProvider, child) {

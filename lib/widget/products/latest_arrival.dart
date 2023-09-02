@@ -56,6 +56,7 @@ class LatestArrivalProductWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         HeartButtonWidget(
+                          productId: productModel.productId,
                           size: 22,
                           color: Theme.of(context).scaffoldBackgroundColor,
                         ),

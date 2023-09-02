@@ -22,8 +22,8 @@ class _ProductWidgetState extends State<ProductWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // final productModelProvider = Provider.of<ProductModel>(context);
     final productProvider = Provider.of<ProductProvider>(context);
+    // final productModel = Provider.of<ProductModel>(context);
 
     final getCurrentProduct = productProvider.findByProdId(widget.productId);
     final cartProvider = Provider.of<CartProvider>(context);
@@ -60,9 +60,10 @@ class _ProductWidgetState extends State<ProductWidget> {
                           maxLines: 2,
                         ),
                       ),
-                      const Flexible(
+                      Flexible(
                           flex: 2,
                           child: HeartButtonWidget(
+                            productId: getCurrentProduct.productId,
                             size: 25,
                           )),
                     ],
